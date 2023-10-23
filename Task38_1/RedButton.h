@@ -10,7 +10,8 @@
 #include<QSlider>
 #include<QObject>
 #include<QTimer>
-#include <QtMultimedia/QSound>
+#include <QtMultimedia/QMediaPlayer>
+#include <QtMultimedia/qsoundeffect.h>
 
 class RedButton : public QPushButton
 {
@@ -34,7 +35,6 @@ private:
     QPixmap mCurrentButtonPixmap;
     QPixmap mButtonDownPixmap;
     QPixmap mButtonUpPixmap;
-   
     bool isDown=false;
 
 };

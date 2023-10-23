@@ -10,6 +10,7 @@ RedButton::RedButton(QWidget *parent)
     mCurrentButtonPixmap = mButtonUpPixmap;
     setGeometry(mCurrentButtonPixmap.rect());
     connect(this, &QPushButton::clicked, this, &RedButton::setDown);
+    connect(this, &QPushButton::clicked, this, &RedButton::sound);
 
 }
 void RedButton::paintEvent(QPaintEvent* e)
@@ -34,12 +35,13 @@ void RedButton::setDown()
 {
     mCurrentButtonPixmap = mButtonDownPixmap;
     update();
-   
     QTimer::singleShot(100, this, &RedButton::setUp);
 }
 void RedButton::sound()
 {
-   QSound::play("C:\\Skilbox\\Task38_1\\Task38_1\\c1.wav");
+    auto* player = new QMediaPlayer();
+    player->setMedia(QUrl::fromLocalFile("click.mp3"));
+    player->play();
 }
 void RedButton::setUp()
 {
